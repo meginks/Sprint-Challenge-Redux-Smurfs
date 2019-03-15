@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCHING, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, SUCCESS, FAILURE } from '../actions'; 
+import { FETCHING, ADD_SMURF, ADDING_SMURF, UPDATE_SMURF, DELETE_SMURF, SUCCESS, FAILURE } from '../actions'; 
 
 // /*
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -26,6 +26,7 @@ switch (action.type) {
       smurfs: [],
       fetchingSmurfs: true,
       deletingSmurf: false,
+      addingSmurf: false,
       updatingSmurf: false,
       error: ''
     }
@@ -34,6 +35,7 @@ switch (action.type) {
         ...state, 
         smurfs: action.payload,
         fetchingSmurfs: false,
+        addingSmurf: false,
         deletingSmurf: false,
         updatingSmurf: false,
         error: ''
@@ -43,11 +45,18 @@ switch (action.type) {
       ...state, 
       smurfs: [],
       fetchingSmurfs: false,
+      addingSmurf: false,
       deletingSmurf: false,
       updatingSmurf: false,
       error: action.payload
     }
     // Adding smurf 
+    case ADDING_SMURF: 
+      return {
+        ...state, 
+        addingSmurf: true
+      }
+
     case ADD_SMURF: 
     const newSmurf = {
       name: action.payload,
@@ -58,7 +67,7 @@ switch (action.type) {
     return {
       ...state, 
       smurfs: [...state.smurfs, newSmurf],
-      
+      addingSmurf: false
     }
 
     // // Updating smurfs 

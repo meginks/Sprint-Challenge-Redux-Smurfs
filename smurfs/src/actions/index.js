@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
   Be sure to export each action type so you can pull it into your reducer
 */
 export const ADD_SMURF = 'ADD_SMURF';
+export const ADDING_SMURF = 'ADDING_SMURF';
 export const GET_SMURFS = 'GET_SMURFS';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
@@ -45,12 +46,19 @@ export const getSmurf = () => dispatch => {
   })
 }; 
 
-export const addSmurf = (smurf) => {
-  return {
-  type: ADD_SMURF,
-  payload: smurf
-  }
-}
+export const addSmurf = () => dispatch => {
+  dispatch({ADDING_SMURF}) 
+  return axios 
+  .post(URL)
+  .then(({name, age, height}) => {
+    dispatch({ type: ADD_SMURF, payload: name, payload: age,
+    payload: height})
+  }) 
+  .catch(err => {
+    dispatch({ type: FAILURE, payload: err})
+  }); 
+  } 
+
 
 export const deleteSmurf = (id) => {
   return {
