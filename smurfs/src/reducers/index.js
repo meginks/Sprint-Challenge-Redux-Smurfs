@@ -1,7 +1,7 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { GET_SMURFS, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, SUCCESS, FAILURE } from '../actions'; 
+import { FETCHING, ADD_SMURF, UPDATE_SMURF, DELETE_SMURF, SUCCESS, FAILURE } from '../actions'; 
 
 // /*
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -19,11 +19,14 @@ const initialState =
  const reducer = (state = initialState, action) => {
 
 switch (action.type) {
-  case GET_SMURFS: 
+  // Cases for getting smurfs 
+  case FETCHING: 
     return {
       ...state, 
       smurfs: [],
       fetchingSmurfs: true,
+      deletingSmurf: false,
+      updatingSmurf: false,
       error: ''
     }
     case SUCCESS: 
@@ -31,6 +34,8 @@ switch (action.type) {
         ...state, 
         smurfs: action.payload,
         fetchingSmurfs: false,
+        deletingSmurf: false,
+        updatingSmurf: false,
         error: ''
       }
     case FAILURE:
@@ -38,8 +43,37 @@ switch (action.type) {
       ...state, 
       smurfs: [],
       fetchingSmurfs: false,
+      deletingSmurf: false,
+      updatingSmurf: false,
       error: action.payload
     }
+    // Adding smurf 
+    case ADD_SMURF: 
+    const newSmurf = {
+      name: action.payload,
+      id: Date.now(),
+      age: '',
+      height: ''
+    }
+    return {
+      ...state, 
+      smurfs: [...state.smurfs, newSmurf],
+      
+    }
+
+    // // Updating smurfs 
+    case UPDATE_SMURF: 
+    return {
+      ...state
+    }
+
+    // Deleting Smurf
+    case DELETE_SMURF: 
+    return {
+      ...state, 
+      smurfs: [state.smurfs.filter(smurf => smurf.id !== action.payload)]
+    }
+
     default: 
       return state;
 }

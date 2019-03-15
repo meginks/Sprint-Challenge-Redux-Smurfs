@@ -6,9 +6,11 @@ import { getSmurf } from '../actions';
 class SmurfListView extends React.Component {
     constructor(props) {
         super(props);
+        console.log("smurflistviewprops", props.smurfs)
     }
 
     componentDidMount() {
+        console.log("this.props.getSmurf()", this.props.getSmurf());
         this.props.getSmurf();
     }
 
@@ -23,8 +25,8 @@ class SmurfListView extends React.Component {
 }
 
 const mapStateToProps = state => {
+    console.log ("MSP", state);
     return {
-        fetchingSmurfs: state.fetchingSmurfs,
         smurfs: state.smurfs,
         error: state.error
     }
