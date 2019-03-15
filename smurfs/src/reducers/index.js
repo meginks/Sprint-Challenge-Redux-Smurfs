@@ -58,12 +58,7 @@ switch (action.type) {
       }
 
     case ADD_SMURF: 
-    const newSmurf = {
-      name: action.payload,
-      id: Date.now(),
-      age: '',
-      height: ''
-    }
+    const newSmurf = action.payload
     return {
       ...state, 
       smurfs: [...state.smurfs, newSmurf],

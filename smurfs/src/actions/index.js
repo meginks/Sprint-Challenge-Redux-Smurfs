@@ -46,18 +46,34 @@ export const getSmurf = () => dispatch => {
   })
 }; 
 
-export const addSmurf = () => dispatch => {
-  dispatch({ADDING_SMURF}) 
-  return axios 
-  .post(URL)
-  .then(({name, age, height}) => {
-    dispatch({ type: ADD_SMURF, payload: name, payload: age,
-    payload: height})
-  }) 
-  .catch(err => {
-    dispatch({ type: FAILURE, payload: err})
-  }); 
-  } 
+
+export const addSmurf = smurf => {
+  const newSmurf = axios.post(`${URL}`, smurf); 
+  return dispatch => {
+    dispatch({ type: ADDING_SMURF }); 
+    newSmurf 
+    .then(({ data }) => {
+      dispatch({ type: ADD_SMURF, payload: data });
+    })
+    .catch( err => {
+      dispatch({ type: FAILURE, payload: err});
+    })
+  }
+}
+
+
+
+// export const addSmurf = () => dispatch => {
+//   dispatch({ADDING_SMURF}) 
+//   return axios 
+//   .post(URL)
+//   .then(({ newSmurf }) => {
+//     dispatch({ type: ADD_SMURF, payload: newSmurf })
+//   }) 
+//   .catch(err => {
+//     dispatch({ type: FAILURE, payload: err})
+//   }); 
+//   } 
 
 
 export const deleteSmurf = (id) => {
