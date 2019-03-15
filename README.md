@@ -23,8 +23,23 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+Actions are packets of information in the form of objects that contain an action type and a payload (or the data we want associated with it). 
+
+Reducers are pure functions that calculate the new state based on the current state and the actions passed to them. They don't update state directly and instead return a new object. 
+
+The Store is the central repository of state in the app. It's known as the single source of truth because it's purpose is to centralize the state data so that there are no weird side effects in the app due to multiple function calls in various places in the app. 
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Application state is state for the whole app. In an app without redux, it would likely be held on the main app component. In Redux, this would refer to the store. 
+Component state is state that is held on a specific component -- for example, state that's held on a form component. 
+If you need your whole app to access certain state, it should be application state. If you only need one component to access that state, you should put it on that component. 
+
+
+- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`? 
+
+Redux-thunk is middleware that allows for asynchronous api calls within redux. It changes our action creators because instead of just naming the action type and payload, we need to include an axios or other api call inside them. 
 
 ## Project Set Up
 
