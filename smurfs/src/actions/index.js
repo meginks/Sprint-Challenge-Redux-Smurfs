@@ -4,13 +4,13 @@ import axios from 'axios';
   Action Types Go Here!
   Be sure to export each action type so you can pull it into your reducer
 */
-const ADD_SMURF = 'ADD_SMURF';
-const GET_SMURFS = 'GET_SMURFS';
-const UPDATE_SMURF = 'UPDATE_SMURF';
-const DELETE_SMURF = 'DELETE_SMURF';
+export const ADD_SMURF = 'ADD_SMURF';
+export const GET_SMURFS = 'GET_SMURFS';
+export const UPDATE_SMURF = 'UPDATE_SMURF';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
-const SUCCESS = 'SUCCESS';
-const FAILURE = 'FAILURE';
+export const SUCCESS = 'SUCCESS';
+export const FAILURE = 'FAILURE';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -23,7 +23,7 @@ const FAILURE = 'FAILURE';
    D - deleteSmurf
 */
 
-export const getSmurf = () = dispatch => {
+export const getSmurf = dispatch => {
   dispatch({ GET_SMURFS }) 
   axios 
   .get('http://localhost:3333/smurfs/')
