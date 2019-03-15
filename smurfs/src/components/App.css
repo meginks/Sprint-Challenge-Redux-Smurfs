@@ -3,7 +3,7 @@
 }
 
 .smurf-container {
-  border: 2px solid #88ccff; 
+  border: 5px solid #55a9ff; 
   margin: 1rem;
   padding: 1rem;
 }
@@ -15,5 +15,22 @@
 } 
 
 button {
-  background-color: #88ccff;
+  background-color: #55a9ff;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+button:hover {
+  background-color: #f52c07;
+  color: white;
+}
+
+h1 {
+  color: #55a9ff;
+}
+
+h2 {
+  color: #f52c07;
 }
