@@ -1,12 +1,14 @@
 import React from 'react';
+import { deleteSmurf } from '../actions';
 
 const Smurf = props => {
     return (
-    <li>
-    <p>{props.smurf.name}</p>
+    <div className="smurf-container">
+    <h2>{props.smurf.name}</h2>
     <p>{props.smurf.age} smurf years old</p>
     <p>{props.smurf.height} apples high</p>
-    </li>
+    <button onClick={() => deleteSmurf()}>Feed {props.smurf.name} to Gargamel</button>
+    </div>
     )
 };
 

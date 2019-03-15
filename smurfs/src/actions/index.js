@@ -9,6 +9,7 @@ export const ADD_SMURF = 'ADD_SMURF';
 export const ADDING_SMURF = 'ADDING_SMURF';
 export const GET_SMURFS = 'GET_SMURFS';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
+export const DELETING_SMURF = 'DELETING_SMURF';
 export const DELETE_SMURF = 'DELETE_SMURF';
 export const FETCHING = 'FETCHING';
 export const SUCCESS = 'SUCCESS';
@@ -62,26 +63,21 @@ export const addSmurf = smurf => {
 }
 
 
-
-// export const addSmurf = () => dispatch => {
-//   dispatch({ADDING_SMURF}) 
-//   return axios 
-//   .post(URL)
-//   .then(({ newSmurf }) => {
-//     dispatch({ type: ADD_SMURF, payload: newSmurf })
-//   }) 
-//   .catch(err => {
-//     dispatch({ type: FAILURE, payload: err})
-//   }); 
-//   } 
-
-
 export const deleteSmurf = (id) => {
-  return {
-    type: DELETE_SMURF,
-    payload: id
-  }
-}
+  const deletedSmurf = axios.delete(`${URL}`, {
+    data: {id}
+  }); 
+  return dispatch => {
+    dispatch({ type: DELETING_SMURF }); 
+    deletedSmurf 
+    .then(({data}) => {
+      dispatch({ type: DELETE_SMURF, payload: data });
+    })
+    .catch(err => {
+      dispatch({ type: FAILURE, payload: err })
+    });
+  };
+};
 
 export const updateSmurf = (id) => {
   return {

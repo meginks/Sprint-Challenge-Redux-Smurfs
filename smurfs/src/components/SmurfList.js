@@ -3,11 +3,11 @@ import Smurf from './Smurf.js';
 
 const SmurfList = props => {
     return (
-        <ul>
+        <div>
             {props.smurfs.map(smurf => {
-                return <Smurf key={smurf.id} smurf={smurf} />;
+                return <Smurf key={smurf.id} smurf={smurf} handleDeleteSmurf={props.handleDeleteSmurf} />;
             })}
-        </ul>
+        </div>
     );
 };
 

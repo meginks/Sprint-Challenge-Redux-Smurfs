@@ -24,7 +24,7 @@ class SmurfForm extends React.Component {
                 <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.handleInputChange} /> 
                 <input type="text" name="age" placeholder="age" value={this.state.age} onChange={this.handleInputChange} /> 
                 <input type="text" name="height" placeholder="height" value={this.state.height} onChange={this.handleInputChange} /> 
-                <button type="submit" onClick={()=> this.handleAddSmurf()}>Add smurf!</button>
+                <button className="submit" type="submit" onClick={()=> this.handleAddSmurf()}>Add smurf!</button>
             </form>
             </div>
         )

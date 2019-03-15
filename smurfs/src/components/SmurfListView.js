@@ -15,6 +15,7 @@ class SmurfListView extends React.Component {
         this.props.getSmurf();
     }
 
+
     render() {
         return (
             <div className="smurf-list-wrapper">
@@ -27,7 +28,7 @@ class SmurfListView extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log ("MSP", state);
+
     return {
         smurfs: state.smurfs,
         error: state.error
